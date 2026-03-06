@@ -1,44 +1,64 @@
-# Habit Tracker
+﻿# Habit Tracker
 
-Simple habit tracking application with analytics.
+## Overview
+Habit Tracker is a Python CLI application for creating daily or weekly habits, recording completions, and analyzing streaks. It follows a clean architecture with distinct presentation, service, repository, and data layers to keep the codebase testable and maintainable.
 
-## Quick Start
+## Features
+- Create and remove habits with daily or weekly periodicity
+- Mark habits as completed with duplicate-prevention logic
+- View current habits and streaks
+- Analyze longest streaks overall or per habit
+- SQLite-backed persistence using SQLAlchemy
 
-1. **Create virtual environment:**
+## Tech Stack
+- Python 3.8+
+- SQLAlchemy 1.4 (ORM)
+- SQLite (default database)
+- pytest (tests)
 
+## Project Structure
+```
+habitTrackerApp/
+├── main.py
+├── analytics/
+├── database/
+├── exceptions/
+├── models/
+├── repositories/
+├── services/
+└── tests/
+```
+
+## Installation
+1. Create a virtual environment:
    ```bash
    python -m venv .venv
    ```
-
-2. **Activate virtual environment:**
+2. Activate it:
    - Windows: `.venv\Scripts\activate`
-   - Mac/Linux: `source .venv/bin/activate`
-
-3. **Install dependencies:**
-
+   - macOS/Linux: `source .venv/bin/activate`
+3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **Run the application:**
-   ```bash
-   python main.py
-   ```
+## Usage
+Run the CLI:
+```bash
+python main.py
+```
 
-## Features
+## Configuration
+The application uses SQLite by default. To change the database location or engine, update the database URL in `main.py`:
+```python
+cli = HabitTrackerCLI(database_url="sqlite:///custom_path/my_habits.db")
+```
 
-- Add daily or weekly habits
-- Track completions
-- View analytics and streaks
-
-## Data Storage
-
-- Uses SQLite database (`habit_tracker.db`)
-
-## Tests
-
-Run all tests with:
-
+## Development
+Run tests:
 ```bash
 pytest
 ```
+
+## License
+No license file is present in this repository. Add a LICENSE file if you want to specify usage terms.
